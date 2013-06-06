@@ -1,8 +1,11 @@
 <?php
 class EThumbnail extends CComponent
 {
-    private $_thumbnail;
-    
+  /**
+   * @var ThumbBase
+   */
+  private $_thumbnail;
+
     public function __construct($thumbnail) {
         $this->_thumbnail=$thumbnail;
     }
@@ -111,6 +114,23 @@ class EThumbnail extends CComponent
     public function show()
     {
             $this->_thumbnail=$this->_thumbnail->show();
+            return $this;
+    }
+
+    /**
+     * Add watermark to Image
+     *
+     * @param $wm
+     * @param $pos
+     * @param $opacity
+     * @param $offsetX
+     * @param $offsetY
+     *
+     * @return EThumbnail
+     */
+    public function addWatermark($wm, $pos, $opacity, $offsetX, $offsetY)
+    {
+            $this->_thumbnail=$this->_thumbnail->addWatermark($wm->_thumbnail, $pos, $opacity, $offsetX, $offsetY);
             return $this;
     }
 }
