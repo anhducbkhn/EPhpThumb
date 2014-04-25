@@ -241,6 +241,20 @@ class GdThumb extends ThumbBase
             return $this->adaptiveResize($new_width, $fix_height);
         }
     }
+    
+    /**
+     * 
+     * @param int $fix_width picel width
+     * @return \GdThumb
+     */
+    public function resizeByWidth($fix_width){
+        if($this->currentDimensions['height']<= $fix_width){
+            return $this;
+        }else{
+            $new_height= round(($fix_width * $this->currentDimensions['height']) / $this->currentDimensions['width']);
+            return $this->adaptiveResize($new_width, $fix_height);
+        }
+    }
 
     /**
      * Adaptively Resizes the Image
