@@ -1,24 +1,52 @@
 <?php
+
 class EThumbnail extends CComponent
 {
-  /**
-   * @var ThumbBase
-   */
-  private $_thumbnail;
 
-    public function __construct($thumbnail) {
-        $this->_thumbnail=$thumbnail;
+    /**
+     * @var ThumbBase
+     */
+    private $_thumbnail;
+
+    public function __construct($thumbnail)
+    {
+        $this->_thumbnail = $thumbnail;
     }
+
     /**
      * Re-sizes this image to the given dimensions.
      * @param integer $width the maximum width.
      * @param integer $height the maximum height.
      * @return EThumbnail
      */
-    public function resize($width=0,$height=0)
+    public function resize($width = 0, $height = 0)
     {
-            $this->_thumbnail=$this->_thumbnail->resize($width,$height);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->resize($width, $height);
+        return $this;
+    }
+
+    /**
+     * Cắt ảnh theo chiều cao, chiểu rộng sẽ tự động cắt theo
+     * Resize a image depending on height
+     * @param int $fix_height
+     * @return \GdThumb
+     */
+    public function resizeByHeight($fix_height)
+    {
+        $this->_thumbnail = $this->_thumbnail->resizeByHeight($fix_height);
+        return $this;
+    }
+
+    /**
+     * Cắt ảnh theo chiều rộng, chiều cao mặc định
+     * Resize a image depending on width
+     * @param int $fix_width picel width
+     * @return \GdThumb
+     */
+    public function resizeByWidth($fix_width)
+    {
+        $this->_thumbnail = $this->_thumbnail->resizeByHeight($fix_width);
+        return $this;
     }
 
     /**
@@ -28,10 +56,10 @@ class EThumbnail extends CComponent
      * @param integer $height the height to crop the image to.
      * @return EThumbnail
      */
-    public function adaptiveResize($width,$height)
+    public function adaptiveResize($width, $height)
     {
-            $this->_thumbnail=$this->_thumbnail->adaptiveResize($width,$height);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->adaptiveResize($width, $height);
+        return $this;
     }
 
     /**
@@ -41,8 +69,8 @@ class EThumbnail extends CComponent
      */
     public function resizePercent($percent)
     {
-            $this->_thumbnail=$this->_thumbnail->resizePercent($percent);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->resizePercent($percent);
+        return $this;
     }
 
     /**
@@ -54,10 +82,10 @@ class EThumbnail extends CComponent
      * @param integer $height the height to crop with.
      * @return EThumbnail
      */
-    public function crop($x,$y,$width,$height)
+    public function crop($x, $y, $width, $height)
     {
-            $this->_thumbnail=$this->_thumbnail->crop($x,$y,$width,$height);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->crop($x, $y, $width, $height);
+        return $this;
     }
 
     /**
@@ -66,10 +94,10 @@ class EThumbnail extends CComponent
      * @param integer $height the height to crop with, if null the height will be the same as the width.
      * @return EThumbnail
      */
-    public function cropFromCenter($width,$height=null)
+    public function cropFromCenter($width, $height = null)
     {
-            $this->_thumbnail=$this->_thumbnail->cropFromCenter($width,$height);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->cropFromCenter($width, $height);
+        return $this;
     }
 
     /**
@@ -77,10 +105,10 @@ class EThumbnail extends CComponent
      * @param string $direction the direction to rotate the image in.
      * @return EThumbnail
      */
-    public function rotateImage($direction='CW')
+    public function rotateImage($direction = 'CW')
     {
-            $this->_thumbnail=$this->_thumbnail->rotateImage($direction);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->rotateImage($direction);
+        return $this;
     }
 
     /**
@@ -91,8 +119,8 @@ class EThumbnail extends CComponent
      */
     public function rotateImageNDegrees($degrees)
     {
-            $this->_thumbnail=$this->_thumbnail->rotateImageNDegrees($degrees);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->rotateImageNDegrees($degrees);
+        return $this;
     }
 
     /**
@@ -101,10 +129,10 @@ class EThumbnail extends CComponent
      * @param string $extension the file extension.
      * @return EThumbnail
      */
-    public function save($path,$extension=null)
+    public function save($path, $extension = null)
     {
-            $this->_thumbnail=$this->_thumbnail->save($path,$extension);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->save($path, $extension);
+        return $this;
     }
 
     /**
@@ -113,8 +141,8 @@ class EThumbnail extends CComponent
      */
     public function show()
     {
-            $this->_thumbnail=$this->_thumbnail->show();
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->show();
+        return $this;
     }
 
     /**
@@ -130,8 +158,8 @@ class EThumbnail extends CComponent
      */
     public function addWatermark($wm, $pos, $opacity, $offsetX, $offsetY)
     {
-            $this->_thumbnail=$this->_thumbnail->addWatermark($wm->_thumbnail, $pos, $opacity, $offsetX, $offsetY);
-            return $this;
+        $this->_thumbnail = $this->_thumbnail->addWatermark($wm->_thumbnail, $pos, $opacity, $offsetX, $offsetY);
+        return $this;
     }
+
 }
-?>

@@ -226,7 +226,8 @@ class GdThumb extends ThumbBase
 
     /**
      * Cắt ảnh theo chiều cao, chiểu rộng sẽ tự động cắt theo
-     * @param type $fix_height
+     * Resize a image depending on height
+     * @param int $fix_height
      * @return \GdThumb
      */
     public function resizeByHeight($fix_height)
@@ -243,7 +244,8 @@ class GdThumb extends ThumbBase
     }
     
     /**
-     * 
+     * Cắt ảnh theo chiều rộng, chiều cao mặc định
+     * Resize a image depending on width
      * @param int $fix_width picel width
      * @return \GdThumb
      */
