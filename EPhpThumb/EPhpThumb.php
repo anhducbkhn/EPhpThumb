@@ -60,4 +60,3 @@ class EPhpThumb extends CComponent
         }
     }
 }
-?>
